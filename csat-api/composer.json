@@ -1,0 +1,48 @@
+{
+    "name": "tarique-iqbal/csat-api",
+    "description": "Customer Satisfaction Score (CSAT)",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Tarique Iqbal",
+            "email": "live.iqbal@gmail.com"
+        }
+    ],
+    "config": {
+        "bin-dir": "bin",
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.2",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-xml": "*",
+        "doctrine/dbal": "^4.2",
+        "doctrine/migrations": "^3.9",
+        "laminas/laminas-httphandlerrunner": "^2.12",
+        "league/route": "^5.1",
+        "monolog/monolog": "^3.9",
+        "nyholm/psr7": "^1.8",
+        "nyholm/psr7-server": "^1.1",
+        "php-di/php-di": "^7.0",
+        "symfony/console": "^6.4",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.75",
+        "mikey179/vfsstream": "^1.6",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.2"
+    }
+}
