@@ -1,0 +1,52 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    container_name: csat_api
+    working_dir: /var/www/csat
+    volumes:
+      - ./csat-api:/var/www/csat
+    environment:
+      PHP_IDE_CONFIG: "serverName=csat_docker"
+      XDEBUG_MODE: "debug"
+      XDEBUG_CONFIG: "client_host=host.docker.internal client_port=9003"
+    networks:
+      - csat_network
+    depends_on:
+      - mysql
+
+  nginx:
+    build:
+      context: .docker/nginx
+    container_name: csat_nginx
+    volumes:
+      - ./csat-api:/var/www/csat
+    ports:
+      - "8080:80"
+    depends_on:
+      - php
+    networks:
+      - csat_network
+
+  mysql:
+    image: mysql:8.0
+    container_name: csat_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: csat
+      MYSQL_USER: local
+      MYSQL_PASSWORD: secret
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - csat_network
+
+networks:
+  csat_network:
+
+volumes:
+  mysql_data:

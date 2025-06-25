@@ -1,0 +1,15 @@
+.DS_Store
+.idea/
+.vscode/
+*.log
+*.swp
+
+csat-api/vendor/
+csat-api/var/
+
+csat-api/.env.dev
+csat-api/.env.test
+csat-api/config/jwt/
+
+csat-api/coverage/
+csat-api/build/
