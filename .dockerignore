@@ -4,12 +4,12 @@
 *.log
 *.swp
 
-csat-api/vendor/
-csat-api/var/
+api-service/vendor/
+api-service/var/
 
-csat-api/.env.dev
-csat-api/.env.test
-csat-api/config/jwt/
+api-service/.env.dev
+api-service/.env.test
+api-service/config/jwt/
 
-csat-api/coverage/
-csat-api/build/
+api-service/coverage/
+api-service/build/

@@ -26,7 +26,7 @@ COPY .docker/php/xdebug.ini /usr/local/etc/php/conf.d/
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-COPY csat-api/composer.json csat-api/composer.lock /var/www/csat/
+COPY api-service/composer.json api-service/composer.lock /var/www/csat/
 
 RUN composer install --no-interaction --prefer-dist --no-scripts --no-progress
 

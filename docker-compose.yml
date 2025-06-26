@@ -6,7 +6,7 @@ services:
     container_name: csat_api
     working_dir: /var/www/csat
     volumes:
-      - ./csat-api:/var/www/csat
+      - ./api-service:/var/www/csat
     environment:
       PHP_IDE_CONFIG: "serverName=csat_docker"
       XDEBUG_MODE: "debug"
@@ -21,7 +21,7 @@ services:
       context: .docker/nginx
     container_name: csat_nginx
     volumes:
-      - ./csat-api:/var/www/csat
+      - ./api-service:/var/www/csat
     ports:
       - "8080:80"
     depends_on:
