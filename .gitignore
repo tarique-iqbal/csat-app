@@ -1,15 +1,3 @@
 /.DS_Store
 /.idea
-
-/.env.*
-!.env.ci
-!.env.dist
-/bin/*
-!bin/console
-!bin/db-migrations
-/var/
-/vendor/
-
-.php-cs-fixer.cache
-.phpunit.result.cache
-/phpunit.xml
+/.vscode

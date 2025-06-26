@@ -1,0 +1,15 @@
+/.DS_Store
+/.idea
+/.vscode
+
+/.env.*
+!.env.dist
+/bin/*
+!bin/console
+!bin/db-migrations
+/var/
+/vendor/
+
+.php-cs-fixer.cache
+.phpunit.result.cache
+/phpunit.xml
