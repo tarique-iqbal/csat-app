@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+define("BASE_DIR", dirname(__DIR__));
+
+require BASE_DIR . '/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+
+$container = require BASE_DIR . '/config/container.php';
+
+$cli = new Application('CSAT CLI');
+
+foreach (glob(BASE_DIR . '/src/Interface/Cli/*Command.php') as $file) {
+    $class = 'App\\Interface\\Cli\\' . basename($file, '.php');
+    $cli->add($container->get($class));
+}
+
+$cli->run();
