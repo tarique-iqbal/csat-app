@@ -31,6 +31,8 @@ final readonly class ExceptionHandler
             }
 
             (new SapiEmitter())->emit($response);
+        } else {
+            echo 'Unhandled error/exception: ' . $exception->getMessage() . PHP_EOL;
         }
     }
 }
