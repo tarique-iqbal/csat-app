@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Application\Csat\UseCase\CalculateWeeklyCsatScoreUseCase;
 use App\Domain\Csat\Repository\CsatRepositoryInterface;
 use App\Infrastructure\Persistence\Dbal\DbalCsatRepository;
 use DI\ContainerBuilder;
@@ -24,6 +25,7 @@ $builder->addDefinitions([
         return $logger;
     },
     CsatRepositoryInterface::class => autowire(DbalCsatRepository::class),
+    CalculateWeeklyCsatScoreUseCase::class => autowire(CalculateWeeklyCsatScoreUseCase::class),
 ]);
 
 return $builder->build();
