@@ -20,7 +20,7 @@ final class CsatCsvParser
         $file->setFlags(SplFileObject::READ_CSV);
 
         foreach ($file as $row) {
-            if (empty($row) || count($row) < 2) {
+            if (!is_countable($row) || count($row) < 2) {
                 continue;
             }
 
