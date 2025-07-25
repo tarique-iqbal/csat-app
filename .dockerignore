@@ -13,3 +13,7 @@ api-service/config/jwt/
 
 api-service/coverage/
 api-service/build/
+
+web-user/node_modules
+web-user/build
+web-user/.env.local

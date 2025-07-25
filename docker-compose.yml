@@ -45,6 +45,25 @@ services:
     networks:
       - csat_network
 
+  web-user:
+    build:
+      context: .
+      dockerfile: .docker/web-user/Dockerfile
+    container_name: csat_web_user
+    depends_on:
+      php:
+        condition: service_started
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web-user:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - SERVICE_API_URL=http://localhost:8080/api
+    stdin_open: true
+    tty: true
+
 networks:
   csat_network:
 
