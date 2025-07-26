@@ -59,8 +59,8 @@ services:
       - ./web-user:/app
       - /app/node_modules
     environment:
-      - CHOKIDAR_USEPOLLING=true
-      - SERVICE_API_URL=http://localhost:8080/api
+      CHOKIDAR_USEPOLLING: "true"
+      SERVICE_API_URL: http://csat_nginx/api
     stdin_open: true
     tty: true
 
