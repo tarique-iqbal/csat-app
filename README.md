@@ -1,4 +1,4 @@
-# Customer Satisfaction Score (CSAT)
+# Customer Satisfaction Score – Monorepo
 Customer Satisfaction Score (CSAT) is a key performance indicator that measures how satisfied customers are with a company’s products, services, or experiences.
 - **Formula**:  
   `CSAT = (Number of Satisfied Customers / Total Responses) × 100`
@@ -14,7 +14,8 @@ Customer Satisfaction Score (CSAT) is a key performance indicator that measures 
 - **Language:** PHP
 - **Database:** MySQL 8.0
 - **Architecture:** Domain-Driven Design Architecture
-- **Docker** (Optional for Containerized Development)
+- **React** (frontend UI for users)
+- **Docker** (optional for Containerized development)
 
 ## Project Structure
 ```bash
