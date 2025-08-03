@@ -15,5 +15,5 @@ api-service/coverage/
 api-service/build/
 
 web-user/node_modules
-web-user/build
+web-user/dist
 web-user/.env.local
