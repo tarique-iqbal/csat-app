@@ -35,7 +35,7 @@ final readonly class CalculateCsatController
         return new JsonResponse([
             'week' => $weekOfYear->week(),
             'year' => $weekOfYear->year(),
-            'csat_score' => round($score, 2),
+            'score' => round($score, 2),
         ]);
     }
 }
