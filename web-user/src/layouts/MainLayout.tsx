@@ -1,5 +1,5 @@
 import React from 'react';
-import './MainLayout.css';
+import '@/layouts/MainLayout.css';
 
 interface MainLayoutProps {
   left?: React.ReactNode;
@@ -9,7 +9,7 @@ interface MainLayoutProps {
 const MainLayout: React.FC<MainLayoutProps> = ({ left, children }) => {
   return (
     <div className="layout-container">
-      <header className="layout-header">My App Header</header>
+      <header className="layout-header"></header>
       <div className="layout-body">
         <aside className="layout-left">{left}</aside>
         <main className="layout-main">{children}</main>
