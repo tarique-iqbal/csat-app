@@ -7,6 +7,7 @@ define("BASE_DIR", dirname(__DIR__));
 require BASE_DIR . '/vendor/autoload.php';
 
 use App\Infrastructure\Exception\ExceptionHandler;
+use App\Infrastructure\Http\Middleware\CorsMiddleware;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
@@ -18,6 +19,7 @@ set_exception_handler([$container->get(ExceptionHandler::class), 'report']);
 
 $routerFactory = require BASE_DIR . '/config/routes.php';
 $router = $routerFactory($container);
+$router->middleware(new CorsMiddleware());
 
 $psr17Factory = new Psr17Factory();
 $request = (new ServerRequestCreator(
