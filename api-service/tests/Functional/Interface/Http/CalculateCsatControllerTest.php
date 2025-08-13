@@ -71,7 +71,7 @@ final class CalculateCsatControllerTest extends FunctionalTestCase
 
         self::assertNull($data['year']);
         self::assertEquals(20, $data['week']);
-        self::assertEquals($expectedNpsScore, $data['csat_score']);
+        self::assertEquals($expectedNpsScore, $data['score']);
     }
 
     public function test_week_has_no_data_http_response_is_ok(): void
@@ -85,7 +85,7 @@ final class CalculateCsatControllerTest extends FunctionalTestCase
 
         self::assertNull($data['year']);
         self::assertEquals(51, $data['week']);
-        self::assertEquals(0, $data['csat_score']);
+        self::assertEquals(0, $data['score']);
     }
 
     public static function year_week_provider(): array
@@ -147,7 +147,7 @@ final class CalculateCsatControllerTest extends FunctionalTestCase
 
         self::assertEquals(2025, $data['year']);
         self::assertEquals(20, $data['week']);
-        self::assertEquals($expectedNpsScore, $data['csat_score']);
+        self::assertEquals($expectedNpsScore, $data['score']);
     }
 
     public function test_invalid_week_http_response_is_400(): void
