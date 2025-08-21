@@ -20,6 +20,7 @@ describe('Nav component', () => {
 
     expect(screen.getByRole('link', { name: /home/i })).toHaveAttribute('href', '/');
     expect(screen.getByRole('link', { name: /about/i })).toHaveAttribute('href', '/about');
+    expect(screen.getByRole('link', { name: /contact us/i })).toHaveAttribute('href', '/contact-us');
     expect(screen.getByRole('link', { name: /this week/i })).toHaveAttribute('href', '/csat/42');
   });
 

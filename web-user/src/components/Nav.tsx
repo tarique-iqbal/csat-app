@@ -9,6 +9,7 @@ const Nav: React.FC = () => {
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
         <li><a href={`/csat/${week}`}>This Week</a></li>
       </ul>
     </nav>

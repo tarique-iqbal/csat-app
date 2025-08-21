@@ -12,6 +12,10 @@ vi.mock('@/pages/About', () => ({
   default: () => <div>About Page</div>,
 }));
 
+vi.mock('@/pages/ContactUs', () => ({
+  default: () => <div>Contact Us Page</div>,
+}));
+
 vi.mock('@/pages/CsatDetails', () => ({
   default: () => <div>CSAT Details Page</div>,
 }));
@@ -33,6 +37,15 @@ describe('AppRoutes', () => {
       </MemoryRouter>
     );
     expect(screen.getByText('About Page')).toBeInTheDocument();
+  });
+
+  it('renders About page for /contact-us', () => {
+    render(
+      <MemoryRouter initialEntries={['/contact-us']}>
+        <AppRoutes />
+      </MemoryRouter>
+    );
+    expect(screen.getByText('Contact Us Page')).toBeInTheDocument();
   });
 
   it('renders CSAT Details page for /csat/:week', () => {
