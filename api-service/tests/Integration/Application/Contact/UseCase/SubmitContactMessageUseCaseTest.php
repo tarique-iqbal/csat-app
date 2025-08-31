@@ -25,12 +25,12 @@ final class SubmitContactMessageUseCaseTest extends IntegrationTestCase
         $contactMessage = $this->useCase->execute(
             'Alice Eve',
             'alice@example.com',
-            'The quick brown fox jumps over the lazy dog near the riverbank under a cloudy windy autumn evening sky.'
+            'The quick brown fox jumps over the lazy dog near the riverbank under a cloudy sky.'
         );
 
         self::assertSame('Alice Eve', $contactMessage->name()->value());
         self::assertSame('alice@example.com', $contactMessage->email()->value());
-        self::assertSame('The quick brown fox jumps over the lazy dog near the riverbank under a cloudy windy autumn evening sky.', $contactMessage->message()->value());
+        self::assertSame('The quick brown fox jumps over the lazy dog near the riverbank under a cloudy sky.', $contactMessage->message()->value());
 
         $row = $this->connection->fetchAssociative('SELECT * FROM contact_messages WHERE id = ?', [
             $contactMessage->id()->value(),
@@ -39,6 +39,6 @@ final class SubmitContactMessageUseCaseTest extends IntegrationTestCase
         self::assertNotFalse($row);
         self::assertSame('Alice Eve', $row['name']);
         self::assertSame('alice@example.com', $row['email']);
-        self::assertSame('The quick brown fox jumps over the lazy dog near the riverbank under a cloudy windy autumn evening sky.', $row['message']);
+        self::assertSame('The quick brown fox jumps over the lazy dog near the riverbank under a cloudy sky.', $row['message']);
     }
 }

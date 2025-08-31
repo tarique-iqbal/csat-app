@@ -34,7 +34,7 @@ final class DbalContactMessageRepositoryTest extends IntegrationTestCase
         $message = new ContactMessage(
             new Name('Alice'),
             new Email('alice@example.com'),
-            new Message('The quick brown fox jumps over the lazy dog near the riverbank under a cloudy windy autumn evening sky.'),
+            new Message('The quick brown fox jumps over the lazy dog near the riverbank under a cloudy sky.'),
             new DateTimeImmutable('2025-08-27 10:00:00')
         );
 
@@ -50,7 +50,7 @@ final class DbalContactMessageRepositoryTest extends IntegrationTestCase
 
         $this->assertSame('Alice', $row['name']);
         $this->assertSame('alice@example.com', $row['email']);
-        $this->assertSame('The quick brown fox jumps over the lazy dog near the riverbank under a cloudy windy autumn evening sky.', $row['message']);
+        $this->assertSame('The quick brown fox jumps over the lazy dog near the riverbank under a cloudy sky.', $row['message']);
         $this->assertSame('2025-08-27 10:00:00', $row['submitted_at']);
     }
 }

@@ -15,7 +15,7 @@ final class SubmitContactControllerTest extends FunctionalTestCase
             ->withBody($this->psrFactory->createStream(json_encode([
                 'name' => 'Alice Eve',
                 'email' => 'alice@example.com',
-                'message' => 'The quick brown fox jumps over the lazy dog near the riverbank under a cloudy windy autumn evening sky.',
+                'message' => 'The quick brown fox jumps over the lazy dog near the riverbank under a cloudy sky.',
             ], JSON_THROW_ON_ERROR)));
 
         $response = $this->kernel->handle($request);
@@ -30,6 +30,6 @@ final class SubmitContactControllerTest extends FunctionalTestCase
 
         self::assertNotFalse($row);
         self::assertSame('Alice Eve', $row['name']);
-        self::assertSame('The quick brown fox jumps over the lazy dog near the riverbank under a cloudy windy autumn evening sky.', $row['message']);
+        self::assertSame('The quick brown fox jumps over the lazy dog near the riverbank under a cloudy sky.', $row['message']);
     }
 }

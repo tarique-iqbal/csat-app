@@ -18,8 +18,8 @@ final class Message
             throw new ContactMessageException('Message cannot be empty');
         }
 
-        if (mb_strlen($value) < 100) {
-            throw new ContactMessageException('Message must be at least 100 characters long');
+        if (mb_strlen($value) < 80) {
+            throw new ContactMessageException('Message must be at least 80 characters long');
         }
 
         if (mb_strlen($value) > 2000) {
