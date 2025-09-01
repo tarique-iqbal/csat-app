@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Functional\Interface\Http;
 
+use App\Infrastructure\Persistence\Schema\Tables;
 use Tests\Infrastructure\Database\FunctionalTestCase;
 
 final class SubmitContactControllerTest extends FunctionalTestCase
@@ -24,9 +25,10 @@ final class SubmitContactControllerTest extends FunctionalTestCase
         $data = json_decode($response->getBody()->getContents(), true);
         self::assertSame(1, $data['id']);
 
-        $row = $this->connection->fetchAssociative('SELECT * FROM contact_messages WHERE email = ?', [
-            'alice@example.com',
-        ]);
+        $row = $this->connection->fetchAssociative(
+            sprintf('SELECT * FROM %s WHERE email = ?', Tables::CONTACT_MESSAGES),
+            ['alice@example.com']
+        );
 
         self::assertNotFalse($row);
         self::assertSame('Alice Eve', $row['name']);

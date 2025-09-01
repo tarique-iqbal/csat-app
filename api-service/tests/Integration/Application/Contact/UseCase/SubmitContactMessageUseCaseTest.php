@@ -6,6 +6,7 @@ namespace Tests\Integration\Application\Contact\UseCase;
 
 use App\Application\Contact\UseCase\SubmitContactMessageUseCase;
 use App\Infrastructure\Persistence\Dbal\DbalContactMessageRepository;
+use App\Infrastructure\Persistence\Schema\Tables;
 use Tests\Infrastructure\Database\IntegrationTestCase;
 
 final class SubmitContactMessageUseCaseTest extends IntegrationTestCase
@@ -32,9 +33,10 @@ final class SubmitContactMessageUseCaseTest extends IntegrationTestCase
         self::assertSame('alice@example.com', $contactMessage->email()->value());
         self::assertSame('The quick brown fox jumps over the lazy dog near the riverbank under a cloudy sky.', $contactMessage->message()->value());
 
-        $row = $this->connection->fetchAssociative('SELECT * FROM contact_messages WHERE id = ?', [
-            $contactMessage->id()->value(),
-        ]);
+        $row = $this->connection->fetchAssociative(
+            sprintf('SELECT * FROM %s WHERE id = ?', Tables::CONTACT_MESSAGES),
+            [$contactMessage->id()->value()]
+        );
 
         self::assertNotFalse($row);
         self::assertSame('Alice Eve', $row['name']);

@@ -7,6 +7,7 @@ namespace App\Infrastructure\Persistence\Dbal;
 use App\Domain\Contact\Entity\ContactMessage;
 use App\Domain\Contact\Repository\ContactMessageRepositoryInterface;
 use App\Domain\Contact\ValueObject\MessageId;
+use App\Infrastructure\Persistence\Schema\Tables;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception;
 
@@ -19,7 +20,7 @@ final readonly class DbalContactMessageRepository implements ContactMessageRepos
     /** @throws Exception */
     public function save(ContactMessage $message): void
     {
-        $this->connection->insert('contact_messages', [
+        $this->connection->insert(Tables::CONTACT_MESSAGES, [
             'name' => $message->name()->value(),
             'email' => $message->email()->value(),
             'message' => $message->message()->value(),

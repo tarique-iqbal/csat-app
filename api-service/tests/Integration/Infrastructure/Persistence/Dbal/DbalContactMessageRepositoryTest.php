@@ -10,6 +10,7 @@ use App\Domain\Contact\ValueObject\Email;
 use App\Domain\Contact\ValueObject\Message;
 use App\Domain\Contact\ValueObject\Name;
 use App\Infrastructure\Persistence\Dbal\DbalContactMessageRepository;
+use App\Infrastructure\Persistence\Schema\Tables;
 use DateTimeImmutable;
 use Tests\Infrastructure\Database\IntegrationTestCase;
 
@@ -44,7 +45,7 @@ final class DbalContactMessageRepositoryTest extends IntegrationTestCase
         $this->assertSame(1, $message->id()->value());
 
         $row = $this->connection->fetchAssociative(
-            'SELECT * FROM contact_messages WHERE id = ?',
+            sprintf('SELECT * FROM %s WHERE id = ?', Tables::CONTACT_MESSAGES),
             [$message->id()->value()]
         );
 
