@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Integration\Interface\Cli;
 
+use App\Infrastructure\Persistence\Schema\Tables;
 use Tests\Infrastructure\Database\IntegrationTestCase;
 use App\Interface\Cli\ImportCsatCommand;
 use org\bovigo\vfs\vfsStream;
@@ -41,7 +42,7 @@ final class ImportNpsCommandTest extends IntegrationTestCase
         $output = $commandTester->getDisplay();
         self::assertStringContainsString('csat:import', $output);
 
-        $rows = $this->connection->fetchAllAssociative('SELECT * FROM csat_scores');
+        $rows = $this->connection->fetchAllAssociative(sprintf('SELECT * FROM %s', Tables::CSAT_SCORES));
         self::assertCount(3, $rows);
     }
 }

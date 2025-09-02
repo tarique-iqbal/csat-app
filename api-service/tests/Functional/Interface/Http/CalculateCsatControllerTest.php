@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Functional\Interface\Http;
 
+use App\Infrastructure\Persistence\Schema\Tables;
 use Tests\Infrastructure\Database\FunctionalTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -13,45 +14,49 @@ final class CalculateCsatControllerTest extends FunctionalTestCase
     {
         return [
             [
-                <<<SQL
-                    INSERT INTO csat_scores (user_id, score, week, year) VALUES
+                sprintf(
+                    'INSERT INTO %s (user_id, score, week, year) VALUES
                         (1, 5, 20, 2025),
                         (2, 4, 20, 2025),
                         (3, 3, 20, 2024),
                         (4, 2, 20, 2024),
                         (5, 1, 20, 2023),
-                        (6, 5, 20, 2023)
-                    SQL,
+                        (6, 5, 20, 2023)',
+                    Tables::CSAT_SCORES
+                ),
                 50,
             ],
             [
-                <<<SQL
-                    INSERT INTO csat_scores (user_id, score, week, year) VALUES
+                sprintf(
+                    'INSERT INTO %s (user_id, score, week, year) VALUES
                         (1, 5, 20, 2025),
                         (2, 4, 20, 2025),
                         (3, 5, 20, 2024),
                         (4, 4, 20, 2024),
-                        (5, 5, 20, 2023)
-                    SQL,
+                        (5, 5, 20, 2023)',
+                    Tables::CSAT_SCORES
+                ),
                 100,
             ],
             [
-                <<<SQL
-                    INSERT INTO csat_scores (user_id, score, week, year) VALUES
+                sprintf(
+                    'INSERT INTO %s (user_id, score, week, year) VALUES
                         (2, 1, 20, 2025),
                         (3, 2, 20, 2024),
                         (4, 1, 20, 2024),
-                        (5, 2, 20, 2023)
-                    SQL,
+                        (5, 2, 20, 2023)',
+                    Tables::CSAT_SCORES
+                ),
                 0,
             ],
             [
-                <<<SQL
-                    INSERT INTO csat_scores (user_id, score, week, year) VALUES
+                sprintf(
+                    'INSERT INTO %s (user_id, score, week, year) VALUES
                         (1, 3, 20, 2025),
                         (3, 3, 20, 2023),
-                        (4, 3, 20, 2024)
-                    SQL,
+                        (4, 3, 20, 2024)',
+                    Tables::CSAT_SCORES
+                ),
                 0,
             ],
         ];
@@ -92,42 +97,46 @@ final class CalculateCsatControllerTest extends FunctionalTestCase
     {
         return [
             [
-                <<<SQL
-                    INSERT INTO csat_scores (user_id, score, week, year) VALUES
+                sprintf(
+                    'INSERT INTO %s (user_id, score, week, year) VALUES
                         (1, 5, 20, 2025),
                         (2, 4, 20, 2025),
                         (3, 3, 20, 2025),
                         (4, 2, 20, 2025),
                         (5, 1, 20, 2025),
-                        (6, 4, 20, 2025)
-                    SQL,
+                        (6, 4, 20, 2025)',
+                    Tables::CSAT_SCORES
+                ),
                 50,
             ],
             [
-                <<<SQL
-                    INSERT INTO csat_scores (user_id, score, week, year) VALUES
+                sprintf(
+                    'INSERT INTO %s (user_id, score, week, year) VALUES
                         (1, 5, 20, 2025),
                         (2, 4, 20, 2025),
                         (3, 5, 20, 2025),
-                        (4, 4, 20, 2025)
-                    SQL,
+                        (4, 4, 20, 2025)',
+                    Tables::CSAT_SCORES
+                ),
                 100,
             ],
             [
-                <<<SQL
-                    INSERT INTO csat_scores (user_id, score, week, year) VALUES
+                sprintf(
+                    'INSERT INTO %s (user_id, score, week, year) VALUES
                         (2, 1, 20, 2025),
                         (3, 2, 20, 2025),
-                        (4, 3, 20, 2025)
-                    SQL,
+                        (4, 3, 20, 2025)',
+                    Tables::CSAT_SCORES
+                ),
                 0,
             ],
             [
-                <<<SQL
-                    INSERT INTO csat_scores (user_id, score, week, year) VALUES
+                sprintf(
+                    'INSERT INTO %s (user_id, score, week, year) VALUES
                         (1, 3, 20, 2025),
-                        (2, 2, 20, 2025)
-                    SQL,
+                        (2, 2, 20, 2025)',
+                    Tables::CSAT_SCORES
+                ),
                 0,
             ],
         ];

@@ -64,7 +64,7 @@ final class CalculateWeeklyNpsScoreUseCaseTest extends IntegrationTestCase
     private function insertSampleScores(array $rows): void
     {
         foreach ($rows as [$userId, $score, $week, $year]) {
-            $this->connection->insert(Tables::SCORES, [
+            $this->connection->insert(Tables::CSAT_SCORES, [
                 'user_id' => $userId,
                 'score' => $score,
                 'week' => $week,

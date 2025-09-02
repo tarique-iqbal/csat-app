@@ -27,7 +27,7 @@ final class ImportCsatResponsesUseCaseTest extends IntegrationTestCase
 
     public function test_import_from_file_skips_existing_feedback_and_saves_new(): void
     {
-        $this->connection->insert(Tables::SCORES, [
+        $this->connection->insert(Tables::CSAT_SCORES, [
             'user_id' => 1,
             'score' => 5,
             'week' => 12,
@@ -43,7 +43,7 @@ final class ImportCsatResponsesUseCaseTest extends IntegrationTestCase
         $this->useCase->importFromFile($file, 12, 2024);
 
         $result = $this->connection->fetchAllAssociative(
-            sprintf('SELECT * FROM %s ORDER BY user_id ASC', Tables::SCORES)
+            sprintf('SELECT * FROM %s ORDER BY user_id ASC', Tables::CSAT_SCORES)
         );
 
         self::assertCount(3, $result);

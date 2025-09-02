@@ -25,7 +25,7 @@ final readonly class DbalCsatRepository implements CsatRepositoryInterface
      */
     public function saveMany(iterable $weeklyScores): void
     {
-        $sqlPrefix = sprintf('INSERT INTO %s (user_id, score, week, year) VALUES ', Tables::SCORES);
+        $sqlPrefix = sprintf('INSERT INTO %s (user_id, score, week, year) VALUES ', Tables::CSAT_SCORES);
         $values = [];
         $params = [];
 
@@ -49,7 +49,7 @@ final readonly class DbalCsatRepository implements CsatRepositoryInterface
             WHERE `user_id` = :user_id
               AND `week` = :week
               AND `year` = :year
-            LIMIT 1', Tables::SCORES);
+            LIMIT 1', Tables::CSAT_SCORES);
 
         $result = $this->connection->fetchOne($sql, [
             'user_id' => $score->userId->value(),
@@ -81,7 +81,7 @@ final readonly class DbalCsatRepository implements CsatRepositoryInterface
      */
     private function findByWeekYear(int $week, ?int $year = null): Traversable
     {
-        $sql = sprintf('SELECT `score` FROM %s WHERE `week` = :week', Tables::SCORES);
+        $sql = sprintf('SELECT `score` FROM %s WHERE `week` = :week', Tables::CSAT_SCORES);
         $params = ['week' => $week];
 
         if ($year !== null) {

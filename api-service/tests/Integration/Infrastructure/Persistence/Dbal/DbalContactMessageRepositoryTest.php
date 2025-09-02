@@ -25,11 +25,6 @@ final class DbalContactMessageRepositoryTest extends IntegrationTestCase
         $this->repository = new DbalContactMessageRepository($this->connection);
     }
 
-    protected function tearDown(): void
-    {
-        $this->connection->executeStatement('DELETE FROM `csat_scores`');
-    }
-
     public function test_it_saves_a_contact_message(): void
     {
         $message = new ContactMessage(

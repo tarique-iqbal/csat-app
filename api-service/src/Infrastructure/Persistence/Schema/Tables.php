@@ -6,7 +6,7 @@ namespace App\Infrastructure\Persistence\Schema;
 
 final class Tables
 {
-    public const SCORES = '`csat_scores`';
+    public const CSAT_SCORES = '`csat_scores`';
 
     public const CONTACT_MESSAGES = '`contact_messages`';
 }

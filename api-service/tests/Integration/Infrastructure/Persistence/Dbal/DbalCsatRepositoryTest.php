@@ -12,6 +12,7 @@ use App\Domain\Csat\ValueObject\UserId;
 use App\Domain\Csat\ValueObject\Week;
 use App\Domain\Csat\ValueObject\Year;
 use App\Infrastructure\Persistence\Dbal\DbalCsatRepository;
+use App\Infrastructure\Persistence\Schema\Tables;
 use Tests\Infrastructure\Database\IntegrationTestCase;
 
 final class DbalCsatRepositoryTest extends IntegrationTestCase
@@ -25,11 +26,6 @@ final class DbalCsatRepositoryTest extends IntegrationTestCase
         $this->repository = new DbalCsatRepository($this->connection);
     }
 
-    protected function tearDown(): void
-    {
-        $this->connection->executeStatement('DELETE FROM `csat_scores`');
-    }
-
     public function test_persists_multiple_csat_weekly_scores(): void
     {
         $weeklyScores = [
@@ -39,7 +35,9 @@ final class DbalCsatRepositoryTest extends IntegrationTestCase
 
         $this->repository->saveMany($weeklyScores);
 
-        $result = $this->connection->fetchAllAssociative('SELECT * FROM csat_scores ORDER BY user_id ASC');
+        $result = $this->connection->fetchAllAssociative(
+            sprintf('SELECT * FROM %s ORDER BY user_id ASC', Tables::CSAT_SCORES)
+        );
 
         self::assertCount(2, $result);
         self::assertSame(1, (int) $result[0]['user_id']);
@@ -60,7 +58,7 @@ final class DbalCsatRepositoryTest extends IntegrationTestCase
             new Year(2024),
         );
 
-        $this->connection->insert('csat_scores', [
+        $this->connection->insert(Tables::CSAT_SCORES, [
             'user_id' => $feedback->userId->value(),
             'score' => $feedback->score->value(),
             'week' => $feedback->week->value(),
@@ -119,7 +117,7 @@ final class DbalCsatRepositoryTest extends IntegrationTestCase
     private function insertSampleScores(array $rows): void
     {
         foreach ($rows as [$userId, $score, $week, $year]) {
-            $this->connection->insert('csat_scores', [
+            $this->connection->insert(Tables::CSAT_SCORES, [
                 'user_id' => $userId,
                 'score' => $score,
                 'week' => $week,
