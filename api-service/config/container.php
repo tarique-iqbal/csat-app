@@ -28,7 +28,7 @@ $builder->addDefinitions([
         return $logger;
     },
     CsatRepositoryInterface::class => autowire(DbalCsatRepository::class),
-    CalculateWeeklyCsatScoreUseCase::class => autowire(CalculateWeeklyCsatScoreUseCase::class),
+    CalculateWeeklyCsatScoreUseCase::class => autowire(),
     ContactMessageRepositoryInterface::class => autowire(DbalContactMessageRepository::class),
     SubmitContactMessageUseCase::class => autowire(),
 ]);
