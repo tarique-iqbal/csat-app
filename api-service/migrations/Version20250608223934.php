@@ -28,7 +28,7 @@ CREATE TABLE csat_scores (
     week SMALLINT UNSIGNED NOT NULL,
     year SMALLINT UNSIGNED NOT NULL,
     UNIQUE KEY unique_user_week_year (user_id, week, year)
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         ');
     }
 
