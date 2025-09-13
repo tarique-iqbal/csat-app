@@ -9,11 +9,14 @@ use App\Domain\Content\ValueObject\Slug;
 use App\Domain\Content\ValueObject\Title;
 use App\Domain\Content\ValueObject\Content;
 use DateTimeImmutable;
+use LogicException;
 
 final class StaticPage
 {
+    private ?StaticPageId $id;
+
     public function __construct(
-        private readonly StaticPageId $id,
+        ?StaticPageId $id,
         private readonly Slug $slug,
         private Title $title,
         private Content $content,
@@ -21,9 +24,18 @@ final class StaticPage
         private ?DateTimeImmutable $updatedAt = null,
         private bool $published = true
     ) {
+        $this->id = $id;
     }
 
-    public function id(): StaticPageId
+    public function setId(StaticPageId $id): void
+    {
+        if ($this->id !== null) {
+            throw new LogicException('ID is already set.');
+        }
+        $this->id = $id;
+    }
+
+    public function id(): ?StaticPageId
     {
         return $this->id;
     }
