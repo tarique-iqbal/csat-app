@@ -12,9 +12,9 @@ interface StaticPageRepositoryInterface
 {
     public function save(StaticPage $page): void;
 
-    public function findById(StaticPageId $id): ?StaticPage;
+    public function findById(StaticPageId $id): StaticPage;
 
-    public function findBySlug(Slug $slug): ?StaticPage;
+    public function findBySlug(Slug $slug): StaticPage;
 
     /**
      * @return StaticPage[]

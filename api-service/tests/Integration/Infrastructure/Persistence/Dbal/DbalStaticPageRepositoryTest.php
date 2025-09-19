@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Tests\Integration\Infrastructure\Persistence\Dbal;
 
 use App\Domain\Content\Entity\StaticPage;
+use App\Domain\Content\Exception\StaticPageNotFoundException;
 use App\Domain\Content\Repository\StaticPageRepositoryInterface;
 use App\Domain\Content\ValueObject\Content;
 use App\Domain\Content\ValueObject\Slug;
+use App\Domain\Content\ValueObject\StaticPageId;
 use App\Domain\Content\ValueObject\Title;
 use App\Infrastructure\Persistence\Dbal\DbalStaticPageRepository;
 use DateTimeImmutable;
@@ -49,6 +51,14 @@ final class DbalStaticPageRepositoryTest extends IntegrationTestCase
         self::assertSame('This is about us page.', (string) $fetched->content());
     }
 
+    public function test_findById_throws_exception_when_page_not_found(): void
+    {
+        $this->expectException(StaticPageNotFoundException::class);
+        $this->expectExceptionMessage('StaticPage not found for id 999');
+
+        $this->repository->findById(new StaticPageId(999));
+    }
+
     public function test_it_finds_a_static_page_by_slug(): void
     {
         $page = $this->createPage('faq', 'FAQ', 'Frequently Asked Questions.');
@@ -57,6 +67,14 @@ final class DbalStaticPageRepositoryTest extends IntegrationTestCase
 
         self::assertSame($page->id()->value(), $fetched->id()->value());
         self::assertSame('FAQ', (string) $fetched->title());
+    }
+
+    public function test_findBySlug_throws_exception_when_page_not_found(): void
+    {
+        $this->expectException(StaticPageNotFoundException::class);
+        $this->expectExceptionMessage('StaticPage not found for slug "random-slug"');
+
+        $this->repository->findBySlug(new Slug('random-slug'));
     }
 
     public function test_it_returns_all_static_pages(): void

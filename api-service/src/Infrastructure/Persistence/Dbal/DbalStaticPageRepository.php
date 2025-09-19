@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\Persistence\Dbal;
 
 use App\Domain\Content\Entity\StaticPage;
+use App\Domain\Content\Exception\StaticPageNotFoundException;
 use App\Domain\Content\Repository\StaticPageRepositoryInterface;
 use App\Domain\Content\ValueObject\Content;
 use App\Domain\Content\ValueObject\Slug;
@@ -41,24 +42,32 @@ final readonly class DbalStaticPageRepository implements StaticPageRepositoryInt
         }
     }
 
-    public function findById(StaticPageId $id): ?StaticPage
+    public function findById(StaticPageId $id): StaticPage
     {
         $row = $this->connection->fetchAssociative(
             sprintf('SELECT * FROM %s WHERE id = ?', Tables::STATIC_PAGES),
             [$id->value()]
         );
 
-        return $row ? $this->hydrate($row) : null;
+        if (!$row) {
+            throw StaticPageNotFoundException::forId($id->value());
+        }
+
+        return $this->hydrate($row);
     }
 
-    public function findBySlug(Slug $slug): ?StaticPage
+    public function findBySlug(Slug $slug): StaticPage
     {
         $row = $this->connection->fetchAssociative(
             sprintf('SELECT * FROM %s WHERE slug = ?', Tables::STATIC_PAGES),
             [$slug->value()]
         );
 
-        return $row ? $this->hydrate($row) : null;
+        if (!$row) {
+            throw StaticPageNotFoundException::forSlug($slug->value());
+        }
+
+        return $this->hydrate($row);
     }
 
     public function findAll(): array
