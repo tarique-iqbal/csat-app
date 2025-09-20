@@ -14,9 +14,8 @@ use Traversable;
 
 final readonly class DbalCsatRepository implements CsatRepositoryInterface
 {
-    public function __construct(
-        private Connection $connection,
-    ) {
+    public function __construct(private Connection $connection)
+    {
     }
 
     /**
