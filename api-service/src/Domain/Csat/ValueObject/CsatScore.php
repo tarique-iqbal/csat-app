@@ -9,9 +9,8 @@ use Traversable;
 
 final readonly class CsatScore
 {
-    private function __construct(
-        private float $value,
-    ) {
+    private function __construct(private float $value)
+    {
     }
 
     /**

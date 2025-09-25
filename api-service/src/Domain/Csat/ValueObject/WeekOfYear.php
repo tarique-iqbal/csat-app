@@ -11,7 +11,7 @@ final readonly class WeekOfYear
 {
     public function __construct(
         private int $week,
-        private ?int $year = null,
+        private ?int $year = null
     ) {
         if ($this->week < 1 || $this->week > 53) {
             throw new InvalidArgumentException('Week number must be between 1 and 53.');

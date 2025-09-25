@@ -12,9 +12,8 @@ final readonly class ValidCsatFile
 
     private Year $year;
 
-    public function __construct(
-        private string $filePath,
-    ) {
+    public function __construct(private string $filePath)
+    {
         if (!file_exists($filePath) || !is_readable($filePath)) {
             throw new InvalidArgumentException("File: {$filePath} does not exist or is not readable.");
         }

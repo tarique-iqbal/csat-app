@@ -15,7 +15,7 @@ final readonly class ImportCsatResponsesUseCase
 
     public function __construct(
         private CsatRepositoryInterface $repository,
-        private CsatCsvParser           $parser,
+        private CsatCsvParser $parser
     ) {
     }
 

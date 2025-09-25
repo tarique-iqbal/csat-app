@@ -10,9 +10,8 @@ use App\Domain\Csat\ValueObject\CsatScore;
 
 final readonly class CalculateWeeklyCsatScoreUseCase
 {
-    public function __construct(
-        private CsatRepositoryInterface $csatRepository,
-    ) {
+    public function __construct(private CsatRepositoryInterface $csatRepository)
+    {
     }
 
     public function execute(CalculateWeeklyCsatScoreQuery $query): float

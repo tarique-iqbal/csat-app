@@ -8,8 +8,7 @@ use App\Domain\Csat\ValueObject\WeekOfYear;
 
 final readonly class CalculateWeeklyCsatScoreQuery
 {
-    public function __construct(
-        public WeekOfYear $weekOfYear,
-    ) {
+    public function __construct(public WeekOfYear $weekOfYear)
+    {
     }
 }

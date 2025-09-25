@@ -8,9 +8,8 @@ use InvalidArgumentException;
 
 final readonly class CsatResponse
 {
-    public function __construct(
-        private int $score,
-    ) {
+    public function __construct(private int $score)
+    {
         if ($score < 1 || $score > 5) {
             throw new InvalidArgumentException('Score must be between 1 and 5.');
         }

@@ -16,9 +16,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand(name: 'csat:import')]
 final class ImportCsatCommand extends Command
 {
-    public function __construct(
-        private readonly ImportCsatResponsesUseCase $importCsatResponsesUseCase,
-    ) {
+    public function __construct(private readonly ImportCsatResponsesUseCase $importCsatResponsesUseCase)
+    {
         parent::__construct();
     }
 
