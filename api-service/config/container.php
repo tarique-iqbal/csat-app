@@ -5,9 +5,11 @@ declare(strict_types=1);
 use App\Application\Contact\UseCase\SubmitContactMessageUseCase;
 use App\Application\Csat\UseCase\CalculateWeeklyCsatScoreUseCase;
 use App\Domain\Contact\Repository\ContactMessageRepositoryInterface;
+use App\Domain\Content\Repository\StaticPageRepositoryInterface;
 use App\Domain\Csat\Repository\CsatRepositoryInterface;
 use App\Infrastructure\Persistence\Dbal\DbalContactMessageRepository;
 use App\Infrastructure\Persistence\Dbal\DbalCsatRepository;
+use App\Infrastructure\Persistence\Dbal\DbalStaticPageRepository;
 use DI\ContainerBuilder;
 use Doctrine\DBAL\Connection;
 use Monolog\Handler\StreamHandler;
@@ -31,6 +33,7 @@ $builder->addDefinitions([
     CalculateWeeklyCsatScoreUseCase::class => autowire(),
     ContactMessageRepositoryInterface::class => autowire(DbalContactMessageRepository::class),
     SubmitContactMessageUseCase::class => autowire(),
+    StaticPageRepositoryInterface::class => autowire(DbalStaticPageRepository::class),
 ]);
 
 return $builder->build();
