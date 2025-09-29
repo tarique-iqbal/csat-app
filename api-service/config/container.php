@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Application\Contact\UseCase\SubmitContactMessageUseCase;
+use App\Application\Content\UseCase\ListStaticPagesUseCase;
 use App\Application\Csat\UseCase\CalculateWeeklyCsatScoreUseCase;
 use App\Domain\Contact\Repository\ContactMessageRepositoryInterface;
 use App\Domain\Content\Repository\StaticPageRepositoryInterface;
@@ -34,6 +35,7 @@ $builder->addDefinitions([
     ContactMessageRepositoryInterface::class => autowire(DbalContactMessageRepository::class),
     SubmitContactMessageUseCase::class => autowire(),
     StaticPageRepositoryInterface::class => autowire(DbalStaticPageRepository::class),
+    ListStaticPagesUseCase::class => autowire(),
 ]);
 
 return $builder->build();
