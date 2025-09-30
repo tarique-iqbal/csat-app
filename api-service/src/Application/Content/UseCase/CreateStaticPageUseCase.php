@@ -25,7 +25,7 @@ final readonly class CreateStaticPageUseCase
             title: new Title($title),
             content: new Content($content),
             createdAt: new DateTimeImmutable(),
-            updatedAt: null
+            updatedAt: null,
         );
 
         $this->repository->save($page);

@@ -31,7 +31,7 @@ final class DbalContactMessageRepositoryTest extends IntegrationTestCase
             new Name('Alice'),
             new Email('alice@example.com'),
             new Message('The quick brown fox jumps over the lazy dog near the riverbank under a cloudy sky.'),
-            new DateTimeImmutable('2025-08-27 10:00:00')
+            new DateTimeImmutable('2025-08-27 10:00:00'),
         );
 
         $this->repository->save($message);

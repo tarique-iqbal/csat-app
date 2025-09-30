@@ -19,7 +19,7 @@ final class ContactMessage
         private readonly Name $name,
         private readonly Email $email,
         private readonly Message $message,
-        private readonly DateTimeImmutable $submittedAt
+        private readonly DateTimeImmutable $submittedAt,
     ) {
         $this->id = null;
     }

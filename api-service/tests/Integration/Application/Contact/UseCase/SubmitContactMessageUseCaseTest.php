@@ -26,7 +26,7 @@ final class SubmitContactMessageUseCaseTest extends IntegrationTestCase
         $contactMessage = $this->useCase->execute(
             'Alice Eve',
             'alice@example.com',
-            'The quick brown fox jumps over the lazy dog near the riverbank under a cloudy sky.'
+            'The quick brown fox jumps over the lazy dog near the riverbank under a cloudy sky.',
         );
 
         self::assertSame('Alice Eve', $contactMessage->name()->value());

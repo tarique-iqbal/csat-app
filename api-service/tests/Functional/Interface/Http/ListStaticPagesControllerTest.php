@@ -21,13 +21,13 @@ final class ListStaticPagesControllerTest extends FunctionalTestCase
         $createUseCase->execute(
             slug: 'about-us',
             title: 'About Us',
-            content: 'This is the About Us page.'
+            content: 'This is the About Us page.',
         );
 
         $createUseCase->execute(
             slug: 'faq',
             title: 'FAQ',
-            content: 'This is the FAQ page.'
+            content: 'This is the FAQ page.',
         );
     }
 

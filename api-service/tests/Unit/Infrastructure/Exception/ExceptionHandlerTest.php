@@ -22,7 +22,7 @@ final class ExceptionHandlerTest extends TestCase
                 $this->equalTo('Something went wrong'),
                 $this->callback(function ($context) use ($exception) {
                     return isset($context['exception']) && $context['exception'] === $exception;
-                })
+                }),
             );
 
         $handler = new ExceptionHandler($logger);

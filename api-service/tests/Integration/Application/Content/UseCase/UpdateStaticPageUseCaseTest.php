@@ -31,14 +31,14 @@ final class UpdateStaticPageUseCaseTest extends IntegrationTestCase
         $page = $this->createUseCase->execute(
             slug: 'faq',
             title: 'FAQ',
-            content: 'Frequently Asked Questions.'
+            content: 'Frequently Asked Questions.',
         );
         $id = $page->id();
 
         $updated = $this->updateUseCase->execute(
             id: $id->value(),
             title: 'Updated FAQ',
-            content: 'Updated content goes here.'
+            content: 'Updated content goes here.',
         );
 
         self::assertSame('Updated FAQ', (string) $updated->title());
@@ -63,7 +63,7 @@ final class UpdateStaticPageUseCaseTest extends IntegrationTestCase
         $this->updateUseCase->execute(
             id: 999,
             title: 'Ghost Page',
-            content: 'This should not exist.'
+            content: 'This should not exist.',
         );
     }
 }

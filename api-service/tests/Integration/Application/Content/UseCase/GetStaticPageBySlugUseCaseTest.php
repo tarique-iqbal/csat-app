@@ -31,7 +31,7 @@ final class GetStaticPageBySlugUseCaseTest extends IntegrationTestCase
         $this->createUseCase->execute(
             slug: 'about-us',
             title: 'About Us',
-            content: 'This is about us page.'
+            content: 'This is about us page.',
         );
 
         $staticPage = $this->getUseCase->execute('about-us');

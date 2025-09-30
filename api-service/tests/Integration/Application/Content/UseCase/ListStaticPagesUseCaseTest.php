@@ -52,7 +52,7 @@ final class ListStaticPagesUseCaseTest extends IntegrationTestCase
             slug: new Slug($slug),
             title: new Title($title),
             content: new Content($content),
-            createdAt: new DateTimeImmutable()
+            createdAt: new DateTimeImmutable(),
         );
 
         $this->repository->save($page);

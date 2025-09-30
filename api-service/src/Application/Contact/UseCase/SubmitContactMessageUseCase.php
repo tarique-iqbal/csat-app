@@ -23,7 +23,7 @@ final readonly class SubmitContactMessageUseCase
             name: new Name($name),
             email: new Email($email),
             message: new Message($message),
-            submittedAt: new DateTimeImmutable()
+            submittedAt: new DateTimeImmutable(),
         );
 
         $this->repository->save($contactMessage);

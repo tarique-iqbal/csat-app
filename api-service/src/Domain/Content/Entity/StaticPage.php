@@ -22,7 +22,7 @@ final class StaticPage
         private Content $content,
         private readonly DateTimeImmutable $createdAt,
         private ?DateTimeImmutable $updatedAt = null,
-        private bool $published = true
+        private bool $published = true,
     ) {
         $this->id = $id;
     }

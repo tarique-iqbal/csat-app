@@ -27,7 +27,7 @@ final class CreateStaticPageUseCaseTest extends IntegrationTestCase
         $page = $this->useCase->execute(
             slug: 'about-us',
             title: 'About Us',
-            content: 'This is the About Us page.'
+            content: 'This is the About Us page.',
         );
 
         self::assertNotNull($page->id());

@@ -10,7 +10,7 @@ final readonly class CsatWeeklyScore
         public UserId $userId,
         public Score $score,
         public Week $week,
-        public Year $year
+        public Year $year,
     ) {
     }
 }

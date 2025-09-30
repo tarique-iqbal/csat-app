@@ -88,7 +88,7 @@ final readonly class DbalStaticPageRepository implements StaticPageRepositoryInt
             content: new Content($row['content']),
             createdAt: new DateTimeImmutable($row['created_at']),
             updatedAt: $row['updated_at'] ? new DateTimeImmutable($row['updated_at']) : null,
-            published: (bool)$row['published']
+            published: (bool)$row['published'],
         );
     }
 }
