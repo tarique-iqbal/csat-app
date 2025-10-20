@@ -24,7 +24,7 @@ RUN pecl install xdebug \
 COPY .docker/php/php.ini /usr/local/etc/php/conf.d/
 COPY .docker/php/xdebug.ini /usr/local/etc/php/conf.d/
 
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
 
 COPY api-service/composer.json api-service/composer.lock /var/www/csat/
 
